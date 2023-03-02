@@ -1,0 +1,1408 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="http://www.facebook.com/2008/fbml">
+<HEAD>
+	<title>Untitled QnA</title>
+	<meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+	<meta name="apple-mobile-web-app-capable" content="no" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta property="og:type" content="website"/>
+	<meta property="og:image" content=""/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<link rel="apple-touch-icon" href="https://www.qnamarkup.org/images/QnA_300.png"/>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+  	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  	<script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+</HEAD>
+<BODY BGCOLOR="#ffffff" BACKGROUND="" MARGINWIDTH="0" MARGINHEIGHT="0" onLoad="startAT('1');"><style>	
+
+	body {
+
+		font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+
+	}
+
+
+
+	#rawmarkup{
+
+		display:none;
+
+	}
+
+	
+
+	#QandA img{
+
+		width:100%;
+
+	}
+
+
+
+	div.main{
+
+		min-width:300px;
+
+		max-width:650px;
+
+		margin: 0 auto;
+
+	padding:0 5px 0 5px;
+
+		}
+
+	div.frame{
+
+		float:left;
+
+		width:100%;
+
+		margin:5px 0 5px 0;
+
+	}
+
+	div.full{
+
+		float:left;
+
+		width:100%;
+
+	}
+
+	.button{
+
+		padding:8px;
+
+		margin:8px 0 0px 0;
+
+		width:100%;
+
+	}
+
+	div.question_text{
+
+		float:left;
+
+		font-family: Verdana, Geneva, sans-serif;
+
+		font-size: 14px;
+
+		line-height: 20px;
+
+		color:#ffffff;
+
+		min-width:30px;
+
+		background:#5489eb;
+
+		border-radius: 15px;
+
+		padding:10px 15px 14px 15px;
+
+		margin-right:45px;
+
+	}
+
+
+
+	div.question_text a:link, div.question_text a:hover, div.question_text a:active, div.question_text a:visited{ color:#e3fbfc; } 
+
+
+
+	div.question_arrow{
+
+		float:left; 
+
+		width: 0; 
+
+		height: 0; 
+
+		border-left: 5px solid transparent; 
+
+		border-right: 10px solid transparent; 
+
+		border-top: 15px solid #5489eb;
+
+		margin:0 20px;
+
+	}
+
+	div.ans_text{
+
+		float:right;
+
+		font-family: Verdana, Geneva, sans-serif;
+
+		font-size: 14px;
+
+		line-height: 20px;
+
+		color:#000000;
+
+		min-width:30px;
+
+		background:#eeeeee;
+
+		border-radius: 15px;
+
+		padding:10px 15px 14px 15px;
+
+		margin-left:45px;
+
+	}
+
+	div.ans_arrow{
+
+		float:right; 
+
+		width: 0; 
+
+		height: 0; 
+
+		border-left: 10px solid transparent; 
+
+		border-right: 5px solid transparent; 
+
+		border-top: 15px solid #eeeeee;
+
+		margin:0 20px;
+
+	}
+
+	div.choices{
+
+		float:left;
+
+		width:100%;
+
+		margin:15px 0 0 0;
+
+	}
+
+	div.standard_buttons{
+
+		float:left;
+
+		width:100%;
+
+		margin-top:5px;
+
+		border-top: 1px solid #ddd; 
+
+		padding-top:12px;		
+
+	}
+
+	div.credits{
+
+		float:left;
+
+		dispaly:none;
+
+		width:100%;
+
+		background:#eee;
+
+		margin:0px 0 15px 0;
+
+	}
+
+	div.credit_text{
+
+		font-family: Verdana, Geneva, sans-serif;
+
+		font-size: 14px;
+
+		line-height: 20px;
+
+		padding:4px 15px 10px 15px;
+
+	}
+
+	li.error{
+
+		list-style-type: none;
+
+		background:#ffdddd;
+
+		margin: 10px 0 0 0;
+
+		padding: 5px;
+
+	}
+
+
+
+	.qpad {
+
+		float:left;
+
+		padding:0 15px;
+
+	}
+
+	
+
+	a.sbutton {
+
+		float:left;
+
+		font-family: Verdana, Geneva, sans-serif;
+
+		font-size: 14px;
+
+		line-height: 20px;
+
+		width:48%;
+
+		background: #eee;
+
+		border-radius: 8px;
+
+		padding:10px 0px 12px 0;
+
+		margin: 0 0 3px 0;
+
+		border: solid 1px #888;
+
+		text-align:center;
+
+		color: #000000;
+
+		text-decoration: none;
+
+	}
+
+
+
+	a.sbutton:hover, a.sbutton:active {
+
+		float:left;
+
+		font-family: Verdana, Geneva, sans-serif;
+
+		font-size: 14px;
+
+		line-height: 20px;
+
+		width:48%;
+
+		background: #ddd;
+
+		border-radius: 8px;
+
+		padding:10px 0px 12px 0;
+
+		margin: 0 0 3px 0;
+
+		border: solid 1px #888;
+
+		text-align:center;
+
+		color: #000000;
+
+		text-decoration: none;
+
+	}
+
+
+
+	a.qabutton {
+
+		float:left;
+
+		font-family: Verdana, Geneva, sans-serif;
+
+		font-size: 14px;
+
+		line-height: 20px;
+
+		width:100%;
+
+		background: #eee;
+
+		border-radius: 8px;
+
+		padding:10px 0px 12px 0;
+
+		margin: 0 0 8px 0;
+
+		border: solid 1px #888;
+
+		text-align:left;
+
+		color: #000000;
+
+		text-decoration: none;
+
+	}
+
+
+
+	a.qabutton:hover, a.qabutton:active {
+
+		float:left;
+
+		font-family: Verdana, Geneva, sans-serif;
+
+		font-size: 14px;
+
+		line-height: 20px;
+
+		width:100%;
+
+		background: #ddd;
+
+		border-radius: 8px;
+
+		padding:10px 0px 12px 0;
+
+		margin: 0 0 8px 0;
+
+		border: solid 1px #888;
+
+		text-align:left;
+
+		color: #000000;
+
+		text-decoration: none;
+
+	}
+
+	
+
+
+
+	div.xdiv {
+
+		float:left;
+
+		width:100%;
+
+		margin: 0 0 8px 0;
+
+		background: #eee;
+
+		border: solid 1px #888;
+
+		border-radius: 8px;
+
+	}	
+
+
+
+	input.xinput {
+
+		-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+
+		-moz-box-sizing: border-box;    /* Firefox, other Gecko */ 
+
+		box-sizing: border-box;         /* Opera/IE 8+ */
+
+		float:left;
+
+		width:100%;
+
+		font-family: Verdana, Geneva, sans-serif;
+
+		font-size: 14px;
+
+		line-height: 20px;
+
+		background: #fff;
+
+		border-top-left-radius: 8px;
+
+		border-top-right-radius: 8px;
+
+		padding:10px 10px 12px 10px;
+
+		border: solid 0px #888;
+
+		border-bottom: solid 1px #888;
+
+		text-align:left;
+
+		color: #000000;
+
+		text-decoration: none;
+
+	}
+
+	
+
+	a.xbutton {
+
+		float:left;
+
+		width:100%;
+
+		text-align:left;
+
+		font-family: Verdana, Geneva, sans-serif;
+
+		font-size: 14px;
+
+		line-height: 20px;
+
+		background: #eee;
+
+		border-radius: 8px;
+
+		padding:10px 0px 12px 0px;
+
+		color: #000000;
+
+		text-decoration: none;
+
+	}
+
+	
+
+	a.xbutton:hover, a.xbutton:active {
+
+		border-top-left-radius: 0px;
+
+		border-top-right-radius: 0px;
+
+		background: #ddd;
+
+	}
+
+</style>
+<FORM name="FORM" id="FORM"><div id="conversation" style="margin:15px auto 0 auto;padding:0 15px;max-width:500px"><div id='QandA' class='QandA'><div style='padding:15px;background:#ddffdd;text-align:center;'>Loading QnA...</div></div><div id='Choices' class='choices'></div><div id="rawmarkup" style="display:none;">Title%3A%0D%0AAuthor%3A%0D%0ADescription%3A%0D%0A%0D%0AQ%281%29%3A+Is+the+item+relevant+under+Federal+Rule+of+Evidence+%28FRE%29+401%3F%0D%0AA%3A+YES%0D%0A%09Q%281.1%29%3A+Is+the+item+excluded+from+evidence+by%3A+%3Cbr%3E%3Cbr%3E+the+US+Constitution+%3Cbr%3E%3Cbr%3E+a+Federal+Statute+%3Cbr%3E%3Cbr%3E+the+FRE+%28impermissible+evidence+of+character%2Fbad+acts%2C+habit%2C+subsequent+remedial+measures%2C+settlement+agreement%2Fnegotiations%2C+etc.%29%3F+++%0D%0A%09A%3A+YES%0D%0A%09%09Q%281.1.1%29%3AGOTO%3A2%0D%0A%09A%3A+NO%0D%0A%09%09Q%281.1.2%29%3A+Is+the+item+protected+from+disclosure+by+either+the+attorney-client+privilege+or+the+work+product+doctrine%3F+%0D%0A%09%09A%3A+YES%0D%0A%09%09%09Q%281.1.2.1%29%3AGOTO%3A2%0D%0A%09%09A%3A+NO%0D%0A%09%09%09Q%281.1.2.2%29%3A+Is+the+item%E2%80%99s+probative+value+substantially+outweighed+by+the+risk+of%3A+unfair+prejudice%2C+confusing+the+issues%2C+misleading+the+jury%2C+undue+delay%2C+wasting+time%2C+or+needlessly+presenting+cumulative+evidence%3F%0D%0A%09%09%09A%3A+YES%0D%0A%09%09%09%09Q%281.1.2.2.1%29%3AGOTO%3A2%0D%0A%09%09%09A%3A+NO%0D%0A%09%09%09%09Q%281.1.2.2.2%29%3A+Is+the+item+either+subject+to+judicial+notice+under+FRE+201%28b%29+or+self-authenticating+under+FRE+902+because+it+is+a+public+record%2C+an+official+publication%2C+a+newspaper%2Fmagazine%2Fsimilar+publication%2C+a+trade+inscription%2C+or+a+business+record%3F%0D%0A%09%09%09%09A%3A+YES%0D%0A%09%09%09%09%09Q%281.1.2.2.2.1%29%3A+Is+the+item+hearsay+under+FRE+801%28c%29+and+not+subject+to+either+of+the+exemptions+provided+in+FRE+801%28d%29%3F%0D%0A%09%09%09%09%09A%3A+YES%0D%0A%09%09%09%09%09%09Q%281.1.2.2.2.1.1%29%3A+Does+the+item+qualify+for+any+of+the+following+exceptions+to+the+rule+against+hearsay+that+might+apply+regardless+of+the+declarant%E2%80%99s+availability%2C+such+as+where+the+item+is+evidence+of+a+present+sense+impression%3F%0D%0A%09%09%09%09%09%09A%3A+YES%0D%0A%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.1%29%3AGOTO%3A1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1%0D%0A%09%09%09%09%09%09A%3A+NO%0D%0A%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2%29%3A+An+excited+utterance%3F%0D%0A%09%09%09%09%09%09%09A%3A+YES%0D%0A%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.1%29%3AGOTO%3A1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1%0D%0A%09%09%09%09%09%09%09A%3A+NO%0D%0A%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2%29%3A+A+statement+of+a+mental%2C+emotional%2C+or+physical+condition+existing+at+the+time+the+statement+was+made%3F%0D%0A%09%09%09%09%09%09%09%09A%3A+YES%0D%0A%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.1%29%3AGOTO%3A1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1%0D%0A%09%09%09%09%09%09%09%09A%3A+NO%0D%0A%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2%29%3A+A+statement+made+for+medical+diagnosis+or+treatment%3F%0D%0A%09%09%09%09%09%09%09%09%09A%3A+YES%0D%0A%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.1%29%3AGOTO%3A1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1%0D%0A%09%09%09%09%09%09%09%09%09A%3A+NO%0D%0A%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2%29%3A+A+recorded+recollection%3F%0D%0A%09%09%09%09%09%09%09%09%09%09A%3A+YES%0D%0A%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.1%29%3AGOTO%3A1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1%0D%0A%09%09%09%09%09%09%09%09%09%09A%3A+NO%0D%0A%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2%29%3A+A+record+of+a+regularly+conducted+activity+or+the+absence+of+one%3F%0D%0A%09%09%09%09%09%09%09%09%09%09%09A%3A+YES%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.1%29%3AGOTO%3A1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1%0D%0A%09%09%09%09%09%09%09%09%09%09%09A%3A+NO%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2%29%3A+A+public+record+or+the+absence+of+one%3F%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09A%3A+YES%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.1%29%3AGOTO%3A1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09A%3A+NO%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2%29%3A+Certain+religious%2C+personal%2C+family%2C+and+history+records+and+information%3F%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09A%3A+YES%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2.1%29%3AGOTO%3A1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09A%3A+NO%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2.2%29%3A+Certain+property+records+and+information%3F%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09A%3A+YES%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2.2.1%29%3AGOTO%3A1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09A%3A+NO%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2%29%3A+A+statement+from+an+ancient+document%3F%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09A%3A+YES%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.1%29%3AGOTO%3A1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09A%3A+NO%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2%29%3A+A+market+report+or+similar+commercial+publication%3F%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09A%3A+YES%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.1%29%3AGOTO%3A1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09A%3A+NO%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2%29%3A+A+statement+from+a+learned+treatise%2C+periodical%2C+or+pamphlet%3F%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09A%3A+YES%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.1%29%3AGOTO%3A1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09A%3A+NO%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2%29%3A+The+reputation+of+a+person%E2%80%99s+character%3F%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09A%3A+YES%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.1%29%3AGOTO%3A1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09A%3A+NO%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2%29%3A+A+final+judgment+of+conviction%3F%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09A%3A+YES%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.1%29%3AGOTO%3A1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09A%3A+NO%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2%29%3A+Is+the+declarant+unavailable+to+testify+under+FRE+804%28a%29+and%2C+if+so%2C+does+the+item+qualify+for+any+of+the+following+additional+exceptions+to+the+rule+against+hearsay+that+might+apply+if+the+declarant+is+unavailable%2C+such+as+where+the+item+constitutes+evidence+of+a+prior+testimony+under+oath%3F%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09A%3A+YES%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1%29%3A+Is+the+item+a+writing+%28including+electronically+stored+information+under+FRE+101%28b%29%286%29%29%2C+recording%2C+or+photograph+offered+to+prove+its+contents+under+FRE+1002%3F%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09A%3A+YES%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1%29%3A+Is+the+item+an+original+under+FRE+1001%28d%29+and+FRE+1002%3F%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09A%3A+YES%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.1%29%3A+The+item+is+admissible+and+may+be+offered+through+a+competent+witness+%28FRE%2C+Article+VI%29.%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09A%3A+NO%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2%29%3A+Is+the+item+a+duplicate+under+FRE+1001%28e%29+and+FRE+1003%3F%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09A%3A+YES%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1%29%3A+Do+the+circumstances+make+it+unfair+to+admit+a+duplicate%2C+or+is+there+a+genuine+question+about+the+original+document%E2%80%99s+authenticity+under+FRE+1003%3F%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09A%3A+YES%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.1%29%3AGOTO%3A2%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09A%3A+NO%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.2%29%3AGOTO%3A3%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09A%3A+NO%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2%29%3A+NOTE-+If+the+answer+to+one+or+more+of+the+above+is+yes%2C+an+original+is+not+required.+%3Cbr%3E%3Cbr%3E+Is+the+item+%E2%80%9Cother+evidence%E2%80%9D+of+the+writing%2C+recording%2C+or+photograph%E2%80%99s+content+%28that+is%2C+neither+an+original+nor+a+duplicate+of+the+writing%2C+recording%2C+or+photograph%29%2C+and%2C+if+so+were+all+originals+lost+or+destroyed%2C+but+not+due+to+the+proponent%E2%80%99s+bad+faith%3F%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09A%3A+YES%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.1%29%3AGOTO%3A3%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09A%3A+NO%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2%29%3A+Is+an+original+not+available+through+any+judicial+process%3F%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09A%3A+YES%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.1%29%3AGOTO%3A3%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09A%3A+NO%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2%29%3A+Did+the+party+against+whom+the+item+is+offered+have+control+of+the+original+%28or+equally+admissible+duplicate%29+when+the+party+knew+of+its+evidentiary+value%2C+yet+failed+to+produce+it%3F%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09A%3A+YES%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.1%29%3AGOTO%3A3%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09A%3A+NO%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2%29%3A+Is+the+item+is+not+closely+related+to+a+controlling+issue%3F%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09A%3A+YES%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.1%29%3AGOTO%3A3%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09A%3A+NO%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2%29%3A+Is+the+item+A+qualifying+copy+offered+to+prove+the+content+of+an+official+record+or+other+document+that+was+publicly+filed+or+recorded%3F%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09A%3A+YES%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.1%29%3AGOTO%3A3%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09A%3A+NO%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2%29%3A+A+summary%2C+chart%2C+or+calculation+offered+to+prove+the+content+of+voluminous+writings%2C+recordings%2C+or+photographs%3F%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09A%3A+YES%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.1%29%3AGOTO%3A3%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09A%3A+NO%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2%29%3A+A+party%E2%80%99s+testimony%2C+deposition%2C+or+written+statement+that+the+proponent+offers+to+prove+the+contents+of+a+writing%2C+recording%2C+or+photograph+against+that+party%3F%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09A%3A+YES%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.1%29%3AGOTO%3A3%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09A%3A+NO%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.2%29%3AGOTO%3A2%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09A%3A+NO%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.2%29%3AGOTO%3A3%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09A%3A+NO%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2%29%3A+A+statement+made+under+the+belief+of+imminent+death%3F%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09A%3A+YES+%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1%29%3AGOTO%3A1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09A%3A+NO%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2%29%3A+A+statement+against+the+declarant%E2%80%99s+interest%3F%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09A%3A+YES%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1%29%3AGOTO%3A1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09A%3A+NO%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2%29%3A+A+statement+of+personal+or+family+history%3F%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09A%3A+YES%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1%29%3AGOTO%3A1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09A%3A+NO%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2%29%3A+A+statement+offered+against+a+party+that+wrongfully+caused+the+declarant%E2%80%99s+unavailability%3F%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09A%3A+YES%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1%29%3AGOTO%3A1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09A%3A+NO%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2%29%3A+Does+the+item+qualify+for+the+residual+hearsay+exception+under+FRE+807%3F%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09A%3A+YES%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1%29%3AGOTO%3A1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09A%3A+NO%0D%0A%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09%09Q%281.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2%29%3AGOTO%3A2%0D%0A%09%09%09%09%09A%3A+NO%0D%0A%09%09%09%09%09%09Q%281.1.2.2.2.1.2%29%3AGOTO%3A1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1%0D%0A%09%09%09%09A%3A+NO%0D%0A%09%09%09%09%09Q%281.1.2.2.2.2%29%3A+Does+extrinsic+evidence+establish+the+item%E2%80%99s+authenticity+under+FRE+901%28b%29%2C+such+as+testimony+from+a+knowledgeable+witness%2C+comparison+by+an+expert+witness+or+the+trier+of+fact+to+other+authentic+items%2C+distinctive+characteristics%2C+public+records+or+reports%2C+or+the+reliability+of+the+process+used+to+create+the+item%3F%0D%0A%09%09%09%09%09A%3A+YES%0D%0A%09%09%09%09%09%09Q%281.1.2.2.2.2.1%29%3AGOTO%3A1.1.2.2.2.1%0D%0A%09%09%09%09%09A%3A+NO%0D%0A%09%09%09%09%09%09Q%281.1.2.2.2.2.2%29%3AGOTO%3A2%0D%0AA%3A+NO%0D%0A%09Q%281.2%29%3AGOTO%3A2%0D%0A%0D%0AQ%282%29%3A+THIS+EVIDENCE+IS+INADMISSIBLE.+%0D%0AQ%283%29%3A+The+item+is+admissible+and+may+be+offered+through+a+competent+witness+%28FRE%2C+Article+VI%29.</div><div id="ondeck" name="ondeck"><div id='Q-1' name='Q-1' style='display:none;'> Is the item relevant under Federal Rule of Evidence (FRE) 401?
+</div><div id='Q-1.1' name='Q-1.1' style='display:none;'> Is the item excluded from evidence by: <br><br> the US Constitution <br><br> a Federal Statute <br><br> the FRE (impermissible evidence of character/bad acts, habit, subsequent remedial measures, settlement agreement/negotiations, etc.)?   
+</div><div id='Q-1.1.1' name='Q-1.1.1' style='display:none;'>GOTO:2</div><div id='Q-1.1.2' name='Q-1.1.2' style='display:none;'> Is the item protected from disclosure by either the attorney-client privilege or the work product doctrine? 
+</div><div id='Q-1.1.2.1' name='Q-1.1.2.1' style='display:none;'>GOTO:2</div><div id='Q-1.1.2.2' name='Q-1.1.2.2' style='display:none;'> Is the item’s probative value substantially outweighed by the risk of: unfair prejudice, confusing the issues, misleading the jury, undue delay, wasting time, or needlessly presenting cumulative evidence?
+</div><div id='Q-1.1.2.2.1' name='Q-1.1.2.2.1' style='display:none;'>GOTO:2</div><div id='Q-1.1.2.2.2' name='Q-1.1.2.2.2' style='display:none;'> Is the item either subject to judicial notice under FRE 201(b) or self-authenticating under FRE 902 because it is a public record, an official publication, a newspaper/magazine/similar publication, a trade inscription, or a business record?
+</div><div id='Q-1.1.2.2.2.1' name='Q-1.1.2.2.2.1' style='display:none;'> Is the item hearsay under FRE 801(c) and not subject to either of the exemptions provided in FRE 801(d)?
+</div><div id='Q-1.1.2.2.2.1.1' name='Q-1.1.2.2.2.1.1' style='display:none;'> Does the item qualify for any of the following exceptions to the rule against hearsay that might apply regardless of the declarant’s availability, such as where the item is evidence of a present sense impression?
+</div><div id='Q-1.1.2.2.2.1.1.1' name='Q-1.1.2.2.2.1.1.1' style='display:none;'>GOTO:1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1</div><div id='Q-1.1.2.2.2.1.1.2' name='Q-1.1.2.2.2.1.1.2' style='display:none;'> An excited utterance?
+</div><div id='Q-1.1.2.2.2.1.1.2.1' name='Q-1.1.2.2.2.1.1.2.1' style='display:none;'>GOTO:1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1</div><div id='Q-1.1.2.2.2.1.1.2.2' name='Q-1.1.2.2.2.1.1.2.2' style='display:none;'> A statement of a mental, emotional, or physical condition existing at the time the statement was made?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.1' style='display:none;'>GOTO:1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1</div><div id='Q-1.1.2.2.2.1.1.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2' style='display:none;'> A statement made for medical diagnosis or treatment?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.1' style='display:none;'>GOTO:1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2' style='display:none;'> A recorded recollection?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.1' style='display:none;'>GOTO:1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2' style='display:none;'> A record of a regularly conducted activity or the absence of one?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.1' style='display:none;'>GOTO:1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2' style='display:none;'> A public record or the absence of one?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.1' style='display:none;'>GOTO:1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2' style='display:none;'> Certain religious, personal, family, and history records and information?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.1' style='display:none;'>GOTO:1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2' style='display:none;'> Certain property records and information?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.1' style='display:none;'>GOTO:1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2' style='display:none;'> A statement from an ancient document?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.1' style='display:none;'>GOTO:1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2' style='display:none;'> A market report or similar commercial publication?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>GOTO:1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'> A statement from a learned treatise, periodical, or pamphlet?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>GOTO:1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'> The reputation of a person’s character?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>GOTO:1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'> A final judgment of conviction?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>GOTO:1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'> Is the declarant unavailable to testify under FRE 804(a) and, if so, does the item qualify for any of the following additional exceptions to the rule against hearsay that might apply if the declarant is unavailable, such as where the item constitutes evidence of a prior testimony under oath?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'> Is the item a writing (including electronically stored information under FRE 101(b)(6)), recording, or photograph offered to prove its contents under FRE 1002?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1' style='display:none;'> Is the item an original under FRE 1001(d) and FRE 1002?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.1' style='display:none;'> The item is admissible and may be offered through a competent witness (FRE, Article VI).
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2' style='display:none;'> Is the item a duplicate under FRE 1001(e) and FRE 1003?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1' style='display:none;'> Do the circumstances make it unfair to admit a duplicate, or is there a genuine question about the original document’s authenticity under FRE 1003?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.1' style='display:none;'>GOTO:2</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.2' style='display:none;'>GOTO:3</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2' style='display:none;'> NOTE- If the answer to one or more of the above is yes, an original is not required. <br><br> Is the item “other evidence” of the writing, recording, or photograph’s content (that is, neither an original nor a duplicate of the writing, recording, or photograph), and, if so were all originals lost or destroyed, but not due to the proponent’s bad faith?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.1' style='display:none;'>GOTO:3</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2' style='display:none;'> Is an original not available through any judicial process?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.1' style='display:none;'>GOTO:3</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2' style='display:none;'> Did the party against whom the item is offered have control of the original (or equally admissible duplicate) when the party knew of its evidentiary value, yet failed to produce it?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.1' style='display:none;'>GOTO:3</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2' style='display:none;'> Is the item is not closely related to a controlling issue?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.1' style='display:none;'>GOTO:3</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2' style='display:none;'> Is the item A qualifying copy offered to prove the content of an official record or other document that was publicly filed or recorded?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.1' style='display:none;'>GOTO:3</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2' style='display:none;'> A summary, chart, or calculation offered to prove the content of voluminous writings, recordings, or photographs?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.1' style='display:none;'>GOTO:3</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2' style='display:none;'> A party’s testimony, deposition, or written statement that the proponent offers to prove the contents of a writing, recording, or photograph against that party?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.1' style='display:none;'>GOTO:3</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.2' style='display:none;'>GOTO:2</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.2' style='display:none;'>GOTO:3</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'> A statement made under the belief of imminent death?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>GOTO:1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'> A statement against the declarant’s interest?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>GOTO:1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'> A statement of personal or family history?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>GOTO:1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'> A statement offered against a party that wrongfully caused the declarant’s unavailability?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>GOTO:1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'> Does the item qualify for the residual hearsay exception under FRE 807?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>GOTO:1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'>GOTO:2</div><div id='Q-1.1.2.2.2.1.2' name='Q-1.1.2.2.2.1.2' style='display:none;'>GOTO:1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1</div><div id='Q-1.1.2.2.2.2' name='Q-1.1.2.2.2.2' style='display:none;'> Does extrinsic evidence establish the item’s authenticity under FRE 901(b), such as testimony from a knowledgeable witness, comparison by an expert witness or the trier of fact to other authentic items, distinctive characteristics, public records or reports, or the reliability of the process used to create the item?
+</div><div id='Q-1.1.2.2.2.2.1' name='Q-1.1.2.2.2.2.1' style='display:none;'>GOTO:1.1.2.2.2.1</div><div id='Q-1.1.2.2.2.2.2' name='Q-1.1.2.2.2.2.2' style='display:none;'>GOTO:2</div><div id='Q-1.2' name='Q-1.2' style='display:none;'>GOTO:2</div><div id='Q-2' name='Q-2' style='display:none;'> THIS EVIDENCE IS INADMISSIBLE. 
+</div><div id='Q-3' name='Q-3' style='display:none;'> The item is admissible and may be offered through a competent witness (FRE, Article VI).</div><div id='A-1.1' name='A-1.1' style='display:none;'> YES
+</div><div id='A-href-1.1' name='A-href-1.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1' name='A-target-1.1' style='display:none;'></div><div id='X-1.1' name='X-1.1' style='display:none;'>YES</div><div id='A-1.1.1' name='A-1.1.1' style='display:none;'> YES
+</div><div id='A-href-1.1.1' name='A-href-1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.1' name='A-target-1.1.1' style='display:none;'></div><div id='X-1.1.1' name='X-1.1.1' style='display:none;'>YES</div><div id='A-1.1.2' name='A-1.1.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2' name='A-href-1.1.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2' name='A-target-1.1.2' style='display:none;'></div><div id='X-1.1.2' name='X-1.1.2' style='display:none;'>NO</div><div id='A-1.1.2.1' name='A-1.1.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.1' name='A-href-1.1.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.1' name='A-target-1.1.2.1' style='display:none;'></div><div id='X-1.1.2.1' name='X-1.1.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2' name='A-1.1.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2' name='A-href-1.1.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2' name='A-target-1.1.2.2' style='display:none;'></div><div id='X-1.1.2.2' name='X-1.1.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.1' name='A-1.1.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.1' name='A-href-1.1.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.1' name='A-target-1.1.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.1' name='X-1.1.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2' name='A-1.1.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2' name='A-href-1.1.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2' name='A-target-1.1.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2' name='X-1.1.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1' name='A-1.1.2.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1' name='A-href-1.1.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1' name='A-target-1.1.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1' name='X-1.1.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1' name='A-1.1.2.2.2.1.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1' name='A-href-1.1.2.2.2.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1' name='A-target-1.1.2.2.2.1.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1' name='X-1.1.2.2.2.1.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.1' name='A-1.1.2.2.2.1.1.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.1' name='A-href-1.1.2.2.2.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.1' name='A-target-1.1.2.2.2.1.1.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.1' name='X-1.1.2.2.2.1.1.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2' name='A-1.1.2.2.2.1.1.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2' name='A-href-1.1.2.2.2.1.1.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2' name='A-target-1.1.2.2.2.1.1.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2' name='X-1.1.2.2.2.1.1.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.1' name='A-1.1.2.2.2.1.1.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.1' name='A-href-1.1.2.2.2.1.1.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.1' name='A-target-1.1.2.2.2.1.1.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.1' name='X-1.1.2.2.2.1.1.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2' name='A-1.1.2.2.2.1.1.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2' name='A-href-1.1.2.2.2.1.1.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2' name='A-target-1.1.2.2.2.1.1.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2' name='X-1.1.2.2.2.1.1.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.1' name='A-1.1.2.2.2.1.1.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.1' name='X-1.1.2.2.2.1.1.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.1' name='A-1.1.2.2.2.1.1.2.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.1' name='X-1.1.2.2.2.1.1.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.1' name='A-1.1.2.2.2.1.1.2.2.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.1' name='X-1.1.2.2.2.1.1.2.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'> YES 
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.2' name='A-1.1.2.2.2.1.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.2' name='A-href-1.1.2.2.2.1.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.2' name='A-target-1.1.2.2.2.1.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.2' name='X-1.1.2.2.2.1.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.2' name='A-1.1.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.2' name='A-href-1.1.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.2' name='A-target-1.1.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.2' name='X-1.1.2.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.2.1' name='A-1.1.2.2.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.2.1' name='A-href-1.1.2.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.2.1' name='A-target-1.1.2.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.2.1' name='X-1.1.2.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.2.2' name='A-1.1.2.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.2.2' name='A-href-1.1.2.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.2.2' name='A-target-1.1.2.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.2.2' name='X-1.1.2.2.2.2.2' style='display:none;'>NO</div><div id='A-1.2' name='A-1.2' style='display:none;'> NO
+</div><div id='A-href-1.2' name='A-href-1.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.2' name='A-target-1.2' style='display:none;'></div><div id='X-1.2' name='X-1.2' style='display:none;'>NO</div>
+<script>
+	var QVnames = [['1','1'],['1.1','1.1'],['1.1.1','1.1.1'],['1.1.2','1.1.2'],['1.1.2.1','1.1.2.1'],['1.1.2.2','1.1.2.2'],['1.1.2.2.1','1.1.2.2.1'],['1.1.2.2.2','1.1.2.2.2'],['1.1.2.2.2.1','1.1.2.2.2.1'],['1.1.2.2.2.1.1','1.1.2.2.2.1.1'],['1.1.2.2.2.1.1.1','1.1.2.2.2.1.1.1'],['1.1.2.2.2.1.1.2','1.1.2.2.2.1.1.2'],['1.1.2.2.2.1.1.2.1','1.1.2.2.2.1.1.2.1'],['1.1.2.2.2.1.1.2.2','1.1.2.2.2.1.1.2.2'],['1.1.2.2.2.1.1.2.2.1','1.1.2.2.2.1.1.2.2.1'],['1.1.2.2.2.1.1.2.2.2','1.1.2.2.2.1.1.2.2.2'],['1.1.2.2.2.1.1.2.2.2.1','1.1.2.2.2.1.1.2.2.2.1'],['1.1.2.2.2.1.1.2.2.2.2','1.1.2.2.2.1.1.2.2.2.2'],['1.1.2.2.2.1.1.2.2.2.2.1','1.1.2.2.2.1.1.2.2.2.2.1'],['1.1.2.2.2.1.1.2.2.2.2.2','1.1.2.2.2.1.1.2.2.2.2.2'],['1.1.2.2.2.1.1.2.2.2.2.2.1','1.1.2.2.2.1.1.2.2.2.2.2.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2','1.1.2.2.2.1.1.2.2.2.2.2.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.1','1.1.2.2.2.1.1.2.2.2.2.2.2.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.1','1.1.2.2.2.1.1.2.2.2.2.2.2.2.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.1','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.1','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.1','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.1','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.1','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.1','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.1','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.1','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.1','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.1','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.1','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.1','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.1','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.1','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.1','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2'],['1.1.2.2.2.1.2','1.1.2.2.2.1.2'],['1.1.2.2.2.2','1.1.2.2.2.2'],['1.1.2.2.2.2.1','1.1.2.2.2.2.1'],['1.1.2.2.2.2.2','1.1.2.2.2.2.2'],['1.2','1.2'],['2','2'],['3','3']];
+</script>
+</div><textarea id="original" name="original" style="display:none;" disabled="disabled"><div id='Q-1' name='Q-1' style='display:none;'> Is the item relevant under Federal Rule of Evidence (FRE) 401?
+</div><div id='Q-1.1' name='Q-1.1' style='display:none;'> Is the item excluded from evidence by: <br><br> the US Constitution <br><br> a Federal Statute <br><br> the FRE (impermissible evidence of character/bad acts, habit, subsequent remedial measures, settlement agreement/negotiations, etc.)?   
+</div><div id='Q-1.1.1' name='Q-1.1.1' style='display:none;'>GOTO:2</div><div id='Q-1.1.2' name='Q-1.1.2' style='display:none;'> Is the item protected from disclosure by either the attorney-client privilege or the work product doctrine? 
+</div><div id='Q-1.1.2.1' name='Q-1.1.2.1' style='display:none;'>GOTO:2</div><div id='Q-1.1.2.2' name='Q-1.1.2.2' style='display:none;'> Is the item’s probative value substantially outweighed by the risk of: unfair prejudice, confusing the issues, misleading the jury, undue delay, wasting time, or needlessly presenting cumulative evidence?
+</div><div id='Q-1.1.2.2.1' name='Q-1.1.2.2.1' style='display:none;'>GOTO:2</div><div id='Q-1.1.2.2.2' name='Q-1.1.2.2.2' style='display:none;'> Is the item either subject to judicial notice under FRE 201(b) or self-authenticating under FRE 902 because it is a public record, an official publication, a newspaper/magazine/similar publication, a trade inscription, or a business record?
+</div><div id='Q-1.1.2.2.2.1' name='Q-1.1.2.2.2.1' style='display:none;'> Is the item hearsay under FRE 801(c) and not subject to either of the exemptions provided in FRE 801(d)?
+</div><div id='Q-1.1.2.2.2.1.1' name='Q-1.1.2.2.2.1.1' style='display:none;'> Does the item qualify for any of the following exceptions to the rule against hearsay that might apply regardless of the declarant’s availability, such as where the item is evidence of a present sense impression?
+</div><div id='Q-1.1.2.2.2.1.1.1' name='Q-1.1.2.2.2.1.1.1' style='display:none;'>GOTO:1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1</div><div id='Q-1.1.2.2.2.1.1.2' name='Q-1.1.2.2.2.1.1.2' style='display:none;'> An excited utterance?
+</div><div id='Q-1.1.2.2.2.1.1.2.1' name='Q-1.1.2.2.2.1.1.2.1' style='display:none;'>GOTO:1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1</div><div id='Q-1.1.2.2.2.1.1.2.2' name='Q-1.1.2.2.2.1.1.2.2' style='display:none;'> A statement of a mental, emotional, or physical condition existing at the time the statement was made?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.1' style='display:none;'>GOTO:1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1</div><div id='Q-1.1.2.2.2.1.1.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2' style='display:none;'> A statement made for medical diagnosis or treatment?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.1' style='display:none;'>GOTO:1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2' style='display:none;'> A recorded recollection?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.1' style='display:none;'>GOTO:1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2' style='display:none;'> A record of a regularly conducted activity or the absence of one?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.1' style='display:none;'>GOTO:1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2' style='display:none;'> A public record or the absence of one?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.1' style='display:none;'>GOTO:1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2' style='display:none;'> Certain religious, personal, family, and history records and information?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.1' style='display:none;'>GOTO:1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2' style='display:none;'> Certain property records and information?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.1' style='display:none;'>GOTO:1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2' style='display:none;'> A statement from an ancient document?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.1' style='display:none;'>GOTO:1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2' style='display:none;'> A market report or similar commercial publication?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>GOTO:1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'> A statement from a learned treatise, periodical, or pamphlet?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>GOTO:1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'> The reputation of a person’s character?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>GOTO:1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'> A final judgment of conviction?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>GOTO:1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'> Is the declarant unavailable to testify under FRE 804(a) and, if so, does the item qualify for any of the following additional exceptions to the rule against hearsay that might apply if the declarant is unavailable, such as where the item constitutes evidence of a prior testimony under oath?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'> Is the item a writing (including electronically stored information under FRE 101(b)(6)), recording, or photograph offered to prove its contents under FRE 1002?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1' style='display:none;'> Is the item an original under FRE 1001(d) and FRE 1002?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.1' style='display:none;'> The item is admissible and may be offered through a competent witness (FRE, Article VI).
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2' style='display:none;'> Is the item a duplicate under FRE 1001(e) and FRE 1003?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1' style='display:none;'> Do the circumstances make it unfair to admit a duplicate, or is there a genuine question about the original document’s authenticity under FRE 1003?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.1' style='display:none;'>GOTO:2</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.2' style='display:none;'>GOTO:3</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2' style='display:none;'> NOTE- If the answer to one or more of the above is yes, an original is not required. <br><br> Is the item “other evidence” of the writing, recording, or photograph’s content (that is, neither an original nor a duplicate of the writing, recording, or photograph), and, if so were all originals lost or destroyed, but not due to the proponent’s bad faith?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.1' style='display:none;'>GOTO:3</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2' style='display:none;'> Is an original not available through any judicial process?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.1' style='display:none;'>GOTO:3</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2' style='display:none;'> Did the party against whom the item is offered have control of the original (or equally admissible duplicate) when the party knew of its evidentiary value, yet failed to produce it?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.1' style='display:none;'>GOTO:3</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2' style='display:none;'> Is the item is not closely related to a controlling issue?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.1' style='display:none;'>GOTO:3</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2' style='display:none;'> Is the item A qualifying copy offered to prove the content of an official record or other document that was publicly filed or recorded?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.1' style='display:none;'>GOTO:3</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2' style='display:none;'> A summary, chart, or calculation offered to prove the content of voluminous writings, recordings, or photographs?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.1' style='display:none;'>GOTO:3</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2' style='display:none;'> A party’s testimony, deposition, or written statement that the proponent offers to prove the contents of a writing, recording, or photograph against that party?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.1' style='display:none;'>GOTO:3</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.2' style='display:none;'>GOTO:2</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.2' style='display:none;'>GOTO:3</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'> A statement made under the belief of imminent death?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>GOTO:1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'> A statement against the declarant’s interest?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>GOTO:1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'> A statement of personal or family history?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>GOTO:1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'> A statement offered against a party that wrongfully caused the declarant’s unavailability?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>GOTO:1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'> Does the item qualify for the residual hearsay exception under FRE 807?
+</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>GOTO:1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1</div><div id='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='Q-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'>GOTO:2</div><div id='Q-1.1.2.2.2.1.2' name='Q-1.1.2.2.2.1.2' style='display:none;'>GOTO:1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1</div><div id='Q-1.1.2.2.2.2' name='Q-1.1.2.2.2.2' style='display:none;'> Does extrinsic evidence establish the item’s authenticity under FRE 901(b), such as testimony from a knowledgeable witness, comparison by an expert witness or the trier of fact to other authentic items, distinctive characteristics, public records or reports, or the reliability of the process used to create the item?
+</div><div id='Q-1.1.2.2.2.2.1' name='Q-1.1.2.2.2.2.1' style='display:none;'>GOTO:1.1.2.2.2.1</div><div id='Q-1.1.2.2.2.2.2' name='Q-1.1.2.2.2.2.2' style='display:none;'>GOTO:2</div><div id='Q-1.2' name='Q-1.2' style='display:none;'>GOTO:2</div><div id='Q-2' name='Q-2' style='display:none;'> THIS EVIDENCE IS INADMISSIBLE. 
+</div><div id='Q-3' name='Q-3' style='display:none;'> The item is admissible and may be offered through a competent witness (FRE, Article VI).</div><div id='A-1.1' name='A-1.1' style='display:none;'> YES
+</div><div id='A-href-1.1' name='A-href-1.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1' name='A-target-1.1' style='display:none;'></div><div id='X-1.1' name='X-1.1' style='display:none;'>YES</div><div id='A-1.1.1' name='A-1.1.1' style='display:none;'> YES
+</div><div id='A-href-1.1.1' name='A-href-1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.1' name='A-target-1.1.1' style='display:none;'></div><div id='X-1.1.1' name='X-1.1.1' style='display:none;'>YES</div><div id='A-1.1.2' name='A-1.1.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2' name='A-href-1.1.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2' name='A-target-1.1.2' style='display:none;'></div><div id='X-1.1.2' name='X-1.1.2' style='display:none;'>NO</div><div id='A-1.1.2.1' name='A-1.1.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.1' name='A-href-1.1.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.1' name='A-target-1.1.2.1' style='display:none;'></div><div id='X-1.1.2.1' name='X-1.1.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2' name='A-1.1.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2' name='A-href-1.1.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2' name='A-target-1.1.2.2' style='display:none;'></div><div id='X-1.1.2.2' name='X-1.1.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.1' name='A-1.1.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.1' name='A-href-1.1.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.1' name='A-target-1.1.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.1' name='X-1.1.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2' name='A-1.1.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2' name='A-href-1.1.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2' name='A-target-1.1.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2' name='X-1.1.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1' name='A-1.1.2.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1' name='A-href-1.1.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1' name='A-target-1.1.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1' name='X-1.1.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1' name='A-1.1.2.2.2.1.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1' name='A-href-1.1.2.2.2.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1' name='A-target-1.1.2.2.2.1.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1' name='X-1.1.2.2.2.1.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.1' name='A-1.1.2.2.2.1.1.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.1' name='A-href-1.1.2.2.2.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.1' name='A-target-1.1.2.2.2.1.1.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.1' name='X-1.1.2.2.2.1.1.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2' name='A-1.1.2.2.2.1.1.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2' name='A-href-1.1.2.2.2.1.1.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2' name='A-target-1.1.2.2.2.1.1.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2' name='X-1.1.2.2.2.1.1.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.1' name='A-1.1.2.2.2.1.1.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.1' name='A-href-1.1.2.2.2.1.1.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.1' name='A-target-1.1.2.2.2.1.1.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.1' name='X-1.1.2.2.2.1.1.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2' name='A-1.1.2.2.2.1.1.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2' name='A-href-1.1.2.2.2.1.1.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2' name='A-target-1.1.2.2.2.1.1.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2' name='X-1.1.2.2.2.1.1.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.1' name='A-1.1.2.2.2.1.1.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.1' name='X-1.1.2.2.2.1.1.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.1' name='A-1.1.2.2.2.1.1.2.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.1' name='X-1.1.2.2.2.1.1.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.1' name='A-1.1.2.2.2.1.1.2.2.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.1' name='X-1.1.2.2.2.1.1.2.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'> YES 
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='A-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='A-href-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='A-target-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' name='X-1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.1.2' name='A-1.1.2.2.2.1.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.1.2' name='A-href-1.1.2.2.2.1.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.1.2' name='A-target-1.1.2.2.2.1.2' style='display:none;'></div><div id='X-1.1.2.2.2.1.2' name='X-1.1.2.2.2.1.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.2' name='A-1.1.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.2' name='A-href-1.1.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.2' name='A-target-1.1.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.2' name='X-1.1.2.2.2.2' style='display:none;'>NO</div><div id='A-1.1.2.2.2.2.1' name='A-1.1.2.2.2.2.1' style='display:none;'> YES
+</div><div id='A-href-1.1.2.2.2.2.1' name='A-href-1.1.2.2.2.2.1' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.2.1' name='A-target-1.1.2.2.2.2.1' style='display:none;'></div><div id='X-1.1.2.2.2.2.1' name='X-1.1.2.2.2.2.1' style='display:none;'>YES</div><div id='A-1.1.2.2.2.2.2' name='A-1.1.2.2.2.2.2' style='display:none;'> NO
+</div><div id='A-href-1.1.2.2.2.2.2' name='A-href-1.1.2.2.2.2.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.1.2.2.2.2.2' name='A-target-1.1.2.2.2.2.2' style='display:none;'></div><div id='X-1.1.2.2.2.2.2' name='X-1.1.2.2.2.2.2' style='display:none;'>NO</div><div id='A-1.2' name='A-1.2' style='display:none;'> NO
+</div><div id='A-href-1.2' name='A-href-1.2' style='display:none;'>javascript:void('');</div><div id='A-target-1.2' name='A-target-1.2' style='display:none;'></div><div id='X-1.2' name='X-1.2' style='display:none;'>NO</div>
+<script>
+	var QVnames = [['1','1'],['1.1','1.1'],['1.1.1','1.1.1'],['1.1.2','1.1.2'],['1.1.2.1','1.1.2.1'],['1.1.2.2','1.1.2.2'],['1.1.2.2.1','1.1.2.2.1'],['1.1.2.2.2','1.1.2.2.2'],['1.1.2.2.2.1','1.1.2.2.2.1'],['1.1.2.2.2.1.1','1.1.2.2.2.1.1'],['1.1.2.2.2.1.1.1','1.1.2.2.2.1.1.1'],['1.1.2.2.2.1.1.2','1.1.2.2.2.1.1.2'],['1.1.2.2.2.1.1.2.1','1.1.2.2.2.1.1.2.1'],['1.1.2.2.2.1.1.2.2','1.1.2.2.2.1.1.2.2'],['1.1.2.2.2.1.1.2.2.1','1.1.2.2.2.1.1.2.2.1'],['1.1.2.2.2.1.1.2.2.2','1.1.2.2.2.1.1.2.2.2'],['1.1.2.2.2.1.1.2.2.2.1','1.1.2.2.2.1.1.2.2.2.1'],['1.1.2.2.2.1.1.2.2.2.2','1.1.2.2.2.1.1.2.2.2.2'],['1.1.2.2.2.1.1.2.2.2.2.1','1.1.2.2.2.1.1.2.2.2.2.1'],['1.1.2.2.2.1.1.2.2.2.2.2','1.1.2.2.2.1.1.2.2.2.2.2'],['1.1.2.2.2.1.1.2.2.2.2.2.1','1.1.2.2.2.1.1.2.2.2.2.2.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2','1.1.2.2.2.1.1.2.2.2.2.2.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.1','1.1.2.2.2.1.1.2.2.2.2.2.2.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.1','1.1.2.2.2.1.1.2.2.2.2.2.2.2.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.1','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.1','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.1','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.1','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.1','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.1','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.1','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.1','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.1.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.1','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.1','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.1','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.1','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.1','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.1','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.1','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.1.2.2.2.2.2.2.2.2.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.1'],['1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2','1.1.2.2.2.1.1.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2.2'],['1.1.2.2.2.1.2','1.1.2.2.2.1.2'],['1.1.2.2.2.2','1.1.2.2.2.2'],['1.1.2.2.2.2.1','1.1.2.2.2.2.1'],['1.1.2.2.2.2.2','1.1.2.2.2.2.2'],['1.2','1.2'],['2','2'],['3','3']];
+</script>
+</textarea><textarea id="transcript" name="transcript" style="display:none;" disabled="disabled"></textarea><div style="float:left;width:100%;margin:15px 0 0px 0;border-top: solid 1px #ddd;"><div id=credits class=credits style="display:none;"><div class=credit_text></div></div><p align=center> <a href="https://www.qnamarkup.org/" target=_top>code your own</a></p></div></FORM></div></div>
+<script type="text/javascript">
+	var QNum = 0;
+	var Qhtml = "";
+	var Dhtml = "";
+	var label = "";
+	var GOTOfired = 0;
+	var path = [];
+	var doc_bin = [];
+	var convo_bin = [];
+	var freetext = 0;
+	var goingback = 0;
+
+	$("#conversation input").on("keypress", 'form', function (e) {
+    	var code = e.keyCode || e.which;
+    	if (code == 13) {
+        	e.preventDefault();
+        	return false;
+    	}
+	});
+	
+	$('#FORM').on('keyup keypress', function(e) {
+  		var keyCode = e.keyCode || e.which;
+  		if (keyCode === 13) { 
+    		e.preventDefault();
+    		return false;
+  		}
+	});
+
+	function answerQ(lb,restart) {
+		currentQ = label;
+		label = lb;
+		Dhtml = 'D-'+label;
+		Qhtml = 'Q-'+label;
+		var Ahtml = 'A-'+label;
+		var Jhtml = 'J-'+QNum;
+		var Xhtml = 'X-'+label;
+		var Xihtml = 'Xi-'+label;
+		
+		var input_error = 0;
+		if (restart == undefined) {
+			var regexp = new RegExp("\<variable\>");
+			//if (document.getElementById(Xihtml)) {
+			//	console.log("document.getElementById("+Xihtml+").value: "+document.getElementById(Xihtml).value);
+			//} else {
+			//	console.log("NO document.getElementById("+Xihtml+").value: ");
+			//}
+			if (document.getElementById(Ahtml).innerHTML.match(regexp)) {
+				document.getElementById(Xihtml).value = document.getElementById(Xihtml).value.replace(/(^\s*|\s*$)/,"");
+				if (document.getElementById(Xihtml).value == "") {
+					input_error = "Your answer appears to be empty.";
+					label = currentQ;
+				} else {
+					document.getElementById(Xihtml).value = document.getElementById(Xihtml).value.replace(/</g,"<");
+					document.getElementById(Xihtml).value = document.getElementById(Xihtml).value.replace(/>/g,">");
+				}
+			} 
+		}
+			
+		if (input_error != 0) {
+			alert(input_error);
+			document.getElementById(Xihtml).focus();			
+		} else {
+			if (restart == undefined) {
+				//if (document.getElementById(Ahtml).innerHTML!="") {
+					document.getElementById('QandA').innerHTML += "<div id=\"break-at-"+QNum+"\" class='frame'><div class='full'><div class='ans_text'>"+document.getElementById(Ahtml).innerHTML+"</div></div><div class='ans_arrow'></div></div></div></div>";
+				//}
+				// insert answer from button
+				if (document.getElementById(valueis(currentQ))) {
+					document.getElementById(valueis(currentQ)).outerHTML='';
+				}
+				if (document.getElementById(Xihtml)) {
+					document.getElementById('QandA').innerHTML = "<textarea style=\"display:none;\" id=\""+valueis(currentQ)+"\" name=\""+valueis(currentQ)+"\">"+document.getElementById(Xihtml).value+"</textarea>\n" + document.getElementById('QandA').innerHTML				
+				} else {
+					document.getElementById('QandA').innerHTML = "<textarea style=\"display:none;\" id=\""+valueis(currentQ)+"\" name=\""+valueis(currentQ)+"\">"+document.getElementById(Xhtml).innerHTML+"</textarea>\n" + document.getElementById('QandA').innerHTML
+				}
+				if (document.getElementById('QandA').innerHTML.match(regexp)) {
+				 	var duplicatevars = new RegExp("id=\""+document.getElementById(Xhtml).innerHTML+"(.)*"+document.getElementById(Xhtml).innerHTML+"\"","g");
+					document.getElementById('QandA').innerHTML = document.getElementById('QandA').innerHTML.replace(duplicatevars, "");
+					document.getElementById('QandA').innerHTML = document.getElementById('QandA').innerHTML.replace(/\<variable\>(\<\/variable\>)?/, "<input type=hidden id=\""+document.getElementById(Xhtml).innerHTML+"\" name=\""+document.getElementById(Xhtml).innerHTML+"\" value=\""+document.getElementById(Xihtml).value+"\"/>"+document.getElementById(Xihtml).value);
+					//document.getElementById('transcript').value = document.getElementById('transcript').value.replace(/\<variable\>(\<\/variable\>)?/, document.getElementById(Xihtml).value+"\n");
+					var thisvariable = new RegExp("<(X|x)>"+document.getElementById(Xhtml).innerHTML+"<\/(X|x)>","g");
+					//document.getElementById('doc').innerHTML = document.getElementById('doc').innerHTML.replace(thisvariable, document.getElementById(document.getElementById(Xhtml).innerHTML).innerHTML);
+					//document.getElementById('ondeck').innerHTML = document.getElementById('ondeck').innerHTML.replace(thisvariable, document.getElementById(valueis(currentQ)).innerHTML);
+					//console.log("thisvariable: "+thisvariable);
+					//console.log("Variable name: "+valueis(currentQ));
+					//console.log("Variable value: "+document.getElementById(valueis(currentQ)).innerHTML);
+					if(document.getElementById(Ahtml).innerHTML != "") { 
+						//document.getElementById('transcript').value += "USER: "+document.getElementById(Xihtml).value+"\n"; 
+						convo_bin.push("USER: "+document.getElementById(Xihtml).value+"\n");
+					}
+				} else {
+					//document.getElementById('transcript').value += "USER: "+document.getElementById(Ahtml).innerHTML+"\n";
+					convo_bin.push("USER: "+document.getElementById(Ahtml).innerHTML+"\n");
+				}
+				document.getElementById('Choices').innerHTML = '';
+				if (goingback == 0) {
+					setTimeout(function() {renderQnA(Qhtml,Jhtml,Dhtml,restart)}, 300);
+				} else {
+					renderQnA(Qhtml,Jhtml,Dhtml,restart);
+				}
+			} else {
+				document.getElementById('Choices').innerHTML = '';
+				path = [];
+				renderQnA(Qhtml,Jhtml,Dhtml,restart);			
+			}
+
+		}
+		
+	}
+
+
+	function renderQnA(Qht,Jht,Dht,restar) {
+		Dhtml = Dht;
+					
+		GOTOfired = 0;
+		path.push(label);
+
+		swapGOTO(Qht,Jht);
+
+		console.log("After swap: "+GOTOfired);
+
+		if (GOTOfired == 0) {
+			document.getElementById('QandA').innerHTML += "<div id="+Jht+" style=\"float:left;width:100%;height:1px;\"> </div>";
+		}
+		document.getElementById('QandA').innerHTML += "<div class='frame'><div class='full'><div class='question_text'>"+swapvar(document.getElementById(Qhtml).innerHTML)+"</div></div><div class='question_arrow'></div></div>";		
+
+		document.getElementById('QandA').innerHTML = document.getElementById('QandA').innerHTML.replace(/(\<br\>){2}/gi,"</div></div><div class='question_arrow'></div></div></div></div><div class='frame'><div class='full'><div class='question_text'>");
+		document.getElementById('QandA').innerHTML = document.getElementById('QandA').innerHTML.replace(/(\<br\> \<br\>)/gi,"<br><br>");
+
+		// add question 
+		//document.getElementById('transcript').value += swapvar("BOT: "+ document.getElementById(Qhtml).innerHTML);
+		//document.getElementById('transcript').value = document.getElementById('transcript').value.replace(/(\<br\>){2}/gi,"\nBOT: ");
+		this_text = swapvar("BOT: "+ document.getElementById(Qhtml).innerHTML);
+		this_text = this_text.replace(/(\<br\>){2}/gi,"\nBOT: ");
+		convo_bin.push(this_text);
+				
+		// make push doc into array in doc() cycle through array and put into output
+		// maybe remove doc div
+		if (document.getElementById(Dhtml)) {
+			doc_bin.push([document.getElementById(Dhtml).innerHTML,currentQ]);
+			console.log("Add to Doc ("+Dhtml+"): "+document.getElementById(Dhtml).innerHTML);
+			//document.getElementById('doc').innerHTML += document.getElementById(Dhtml).innerHTML;
+		}
+						
+		tmp = getElementsByIdRegExp("div", "A-"+label+"(\\.{1}\\d){1}$");
+		a_href = getElementsByIdRegExp("div", "A-href-"+label+"(\\.{1}\\d){1}$");
+		a_target = getElementsByIdRegExp("div", "A-target-"+label+"(\\.{1}\\d){1}$");
+		tmp_x = getElementsByIdRegExp("div", "X-"+label+"(\\.{1}\\d){1}$");
+		var Xishere = 0;
+		for ( var i = 0; i < tmp.length; i++ ) {
+			var nextlabel = tmp[i].id.substr(2);
+			var Xihtml = 'Xi-'+nextlabel;
+			var regexp = "\<variable\>";
+			var regexp_js = "^javascript:";
+			var regexp_load_js = "loadQnA";
+			var script_call = "";
+			if (tmp[i].innerHTML.match(regexp)) {
+				if (a_href[i].innerHTML.match('^(_blank:)?javascript:')) {
+					script_call = a_href[i].innerHTML.replace(/^(_blank:)?javascript:/gi,"");
+				} else {
+					if (a_href[i].innerHTML.match('^_blank:')) {
+						script_call = "window.open('"+a_href[i].innerHTML.replace(/^_blank:/,"")+"','_blank');";			
+					} else {
+						script_call = "location.href = '"+a_href[i].innerHTML+"';";
+					}
+				}
+				
+				if(a_href[i].innerHTML.match(regexp_load_js)){
+					//script_call = "xv = document.getElementById('"+Xihtml+"').value;" + script_call.replace(/this\.innerHTML/gi,"xv")
+					script_call = script_call.replace(/this\.innerHTML/gi,"document.getElementById('"+Xihtml+"').value")
+					document.getElementById('Choices').innerHTML += "<div class=\"xdiv\"><input type=\""+a_target[i].innerHTML+"\" id=\""+Xihtml+"\" name=\""+Xihtml+"\" class=\"xinput\" onkeypress=\"if (event.keyCode==13){"+script_call+"}\"/><a href=\"javascript:void('');\" class=\"xbutton\" onClick=\""+script_call+"\"><span class=\"qpad\">Send</span></a></div>";				
+				} else {
+					script_call = script_call.replace(/this\.innerHTML/gi,"document.getElementById('"+Xihtml+"').value")
+					document.getElementById('Choices').innerHTML += "<div class=\"xdiv\"><input type=\""+a_target[i].innerHTML+"\" id=\""+Xihtml+"\" name=\""+Xihtml+"\" class=\"xinput\" onkeypress=\"if (event.keyCode==13){answerQ('"+nextlabel+"');"+script_call+"}\"/><a href=\"javascript:void('');\" class=\"xbutton\" onClick=\"answerQ('"+nextlabel+"');"+script_call+"\"><span class=\"qpad\">Send</span></a></div>";
+				}
+				Xishere = Xihtml;
+				freetext = Xihtml;
+			} else if (a_href[i].innerHTML.match(regexp_js) && a_href[i].innerHTML != "javascript:void('');") {
+				tmp[i].innerHTML = tmp[i].innerHTML.replace(/(\<br\>){2}/gi,"<br> <br>");
+				var script_call = a_href[i].innerHTML.replace(/^javascript:/gi,"");
+				if(a_href[i].innerHTML.match(regexp_load_js)){
+					document.getElementById('Choices').innerHTML += "<a href=\"javascript:void('');\" class=\"qabutton\" onClick=\""+script_call+"\" "+a_target[i].innerHTML+"><span class=\"qpad\">"+tmp[i].innerHTML+"</span></a>";							
+				} else {
+					document.getElementById('Choices').innerHTML += "<a href=\"javascript:void('');\" class=\"qabutton\" onClick=\"answerQ('"+nextlabel+"');"+script_call+"\" "+a_target[i].innerHTML+"><span class=\"qpad\">"+tmp[i].innerHTML+"</span></a>";							
+				}	
+				freetext = 0;
+			} else {
+				tmp[i].innerHTML = tmp[i].innerHTML.replace(/(\<br\>){2}/gi,"<br> <br>");
+				document.getElementById('Choices').innerHTML += "<a href=\""+a_href[i].innerHTML+"\" class=\"qabutton\" onClick=\"answerQ('"+nextlabel+"');\" "+a_target[i].innerHTML+"><span class=\"qpad\">"+tmp[i].innerHTML+"</span></a>";				
+				freetext = 0;
+			}
+		}			
+
+		if (restar == undefined) {
+			
+			document.getElementById('Choices').innerHTML += "<div class=\"standard_buttons\">";
+			if (QNum > 1) { 
+				document.getElementById('Choices').innerHTML += "<a href=\"javascript:void('');\" class=\"sbutton\" onClick=\"goback(QNum);\">GO BACK ONE</a>";
+				document.getElementById('Choices').innerHTML += "<a href=\"javascript:void('');\" class=\"sbutton\" style=\"float:right\" onClick=\"startAT('1');\">START OVER</a>";
+			} else if (QNum == 1) {
+				document.getElementById('Choices').innerHTML += "<a href=\"javascript:void('');\" class=\"sbutton\" onClick=\"startAT('1');\">GO BACK ONE</a>";
+				document.getElementById('Choices').innerHTML += "<a href=\"javascript:void('');\" class=\"sbutton\" style=\"float:right\" onClick=\"startAT('1');\">START OVER</a>";				
+			}
+			document.getElementById('Choices').innerHTML += "</div>"
+		}
+				
+		if (QNum != 0) { 
+			if (goingback == 0) {
+				scroll2Q(Jht,800);           	
+			} else {
+				window.scrollTo(0, document.getElementById(Jht).offsetTop);     		
+			}
+		} else if (restar != undefined) {
+			window.scrollTo(0,0);
+		}
+		if (Xishere != 0 && window.self == window.top) {
+			console.log("Set focus for: "+Xishere);
+			document.getElementById(Xishere).focus();
+		}
+		console.log("Q#: "+QNum);
+		console.log("New Path: "+path);
+		QNum++;
+		goingback = 0;
+					
+	}
+
+	
+	function swapGOTO(QH,JH) {
+		var regex = new RegExp("GOTO:(\d*)(\.\d+)*");
+		if (regex.test(document.getElementById(QH).innerHTML)) {
+			var Qtext = document.getElementById(QH).innerHTML.match(/(GOTO:(\d*)(.\s*\d+)*)/);
+			document.getElementById('QandA').innerHTML += "<div id="+JH+" style=\"float:left;width:100%;height:1px;\"> </div>";
+			// Add question
+			// note I added () around the < to avoid a < followed by a ? which causes problems in php
+			var Qtexttrans = document.getElementById(QH).innerHTML.replace(/(<)?GOTO:(\d*)(.\s*\d+)*>?/,"");
+			Qtexttrans = Qtexttrans.replace(/\s*$/,"");
+			if (Qtexttrans != "") {
+				//document.getElementById('transcript').value += swapvar("BOT: "+Qtexttrans+"\n");
+				convo_bin.push(swapvar("BOT: "+Qtexttrans+"\n"));
+			}
+			if (document.getElementById(QH).innerHTML.match(/^GOTO:(\d*)(.\s*\d+)*/)) {
+				document.getElementById('QandA').innerHTML += document.getElementById(QH).innerHTML.replace(/(<)?GOTO:(\d*)(.\s*\d+)*>?/,"<"+Qtext+">");
+			} else {
+				document.getElementById('QandA').innerHTML += "<div class='frame'><div class='full'><div class='question_text'>"+ swapvar(document.getElementById(QH).innerHTML.replace(/(<)?GOTO:(\d*)(.\s*\d+)*>?/,"<"+Qtext+">"))+"</div></div><div class='question_arrow'></div></div>";						
+			}
+			// replace GOTO with text
+			label = Qtext[0].replace("GOTO:","");
+			Qhtml = 'Q-'+label;
+			if (document.getElementById(Dhtml)) {
+				doc_bin.push([document.getElementById(Dhtml).innerHTML,currentQ]);
+				console.log("Add to Doc ("+Dhtml+"): "+document.getElementById(Dhtml).innerHTML);
+				//document.getElementById('doc').innerHTML += document.getElementById(Dhtml).innerHTML;
+			}
+			Dhtml = 'D-'+label;
+			GOTOfired = 1;
+			console.log("In swap: "+GOTOfired);
+			swapGOTO(Qhtml,JH);
+		}
+	}
+
+	
+	function scroll2Q(id,speed) {
+		var top = document.getElementById(id).offsetTop; //Getting Y of target element
+		console.log("Jump to Y for ("+id+"): "+top);
+		//adapted from https://github.com/Yappli/smooth-scroll
+		var moving_frequency = 5; // Affects performance !
+		var hop_count = speed/moving_frequency
+        var getScrollTopDocumentAtBegin = document.documentElement.scrollTop + document.body.scrollTop;
+        var gap = (top - getScrollTopDocumentAtBegin) / hop_count;
+		for(var i = 1; i <= hop_count; i++)
+        {
+        	(function()
+           	{
+           		var hop_top_position = gap*i;
+           	    setTimeout(function(){  window.scrollTo(0, hop_top_position + getScrollTopDocumentAtBegin); }, moving_frequency*i);
+           	 })();
+        }
+	}
+
+	function getElementsByIdIs(selectorTag, name) {
+		var items = [];
+		var myPosts = document.getElementsByTagName(selectorTag);
+			//omitting undefined null check for brevity
+			if (myPosts[0].id == name) {
+				items.push(myPosts[0]);
+			}
+		
+		return items;
+	}
+
+	function getElementsByIdRegExp(selectorTag, expression) {
+		// note you need to escape \ in the expression with \, i.e., \\ = \
+		var regex = new RegExp(expression);
+		var items = [];
+		var myPosts = document.getElementsByTagName(selectorTag);
+		for (var i = 0; i < myPosts.length; i++) {
+			if (regex.test(myPosts[i].id)) {
+				items.push(myPosts[i]);
+			}
+		}
+		
+		return items;
+	}	
+
+	// startAT QnA
+	function startAT(id) {
+		document.getElementById('ondeck').innerHTML = document.getElementById('original').value;
+		document.getElementById('QandA').innerHTML = "";
+		//document.getElementById('transcript').value = "";
+		doc_bin = [];
+		convo_bin = [];
+		QNum = 0;
+		answerQ(id,'1');
+	}
+		
+	//show funtion
+	function show(id) { 
+   		if (document.getElementById) { // DOM3 = IE5, NS6
+        	document.getElementById(id).style.display = 'block';
+    	} else { 
+        	if (document.layers) {  
+            	document.id.display = 'block';
+        	} else {
+                document.all.id.style.display = 'block';
+        	}
+    	}
+	}
+
+	//hide funtion
+	function hide(id) { 
+    	if (document.getElementById) { // DOM3 = IE5, NS6
+        	document.getElementById(id).style.display = 'none';         
+    	} else { 
+        	if (document.layers) {  
+                document.id.display = 'none';
+        	} else {
+                document.all.id.style.display = 'none';
+        	}
+    	}
+	}
+
+	//show OR hide funtion depends on if element is shown or hidden
+	function shoh(id) { 
+    	if (document.getElementById) { // DOM3 = IE5, NS6
+        	if (document.getElementById(id).style.display == "none"){
+            	document.getElementById(id).style.display = 'block';
+        	} else {
+            	document.getElementById(id).style.display = 'none';         
+        	}   
+    	} else { 
+        	if (document.layers) {  
+            	if (document.id.display == "none"){
+                	document.id.display = 'block';
+            	} else {
+                	document.id.display = 'none';
+            	}
+        	} else {
+            	if (document.all.id.style.visibility == "none"){
+                	document.all.id.style.display = 'block';
+            	} else {
+                	document.all.id.style.display = 'none';
+            	}
+        	}
+    	}
+	}
+	
+	function swapvar(input) {
+		var output; 
+		for(var i = 0; i < QVnames.length; i++) {
+			if (document.getElementById(QVnames[i][1])) {
+				var item = QVnames[i][1].replace(/\./g,"\\.");
+				var varegx = new RegExp("<x>"+item+"<\/x>","gi");
+				//console.log(QVnames[i][1]);
+				input = input.replace(varegx,document.getElementById(QVnames[i][1]).innerHTML);
+			} 
+		}
+		output = input
+		return output
+	}
+	
+	function docforindex(indexID) {
+		for(var i = 0; i < doc_bin.length; i++) {
+			if(doc_bin[i][1] == indexID) {
+				return true;
+			}
+		}
+	}
+	function indexis(variablename) {
+		for(var i = 0; i < QVnames.length; i++) {
+			if(QVnames[i][1] == variablename) {
+				return QVnames[i][0];
+			}
+		}
+	}
+	function valueis(variablekey) {
+		for(var i = 0; i < QVnames.length; i++) {
+			if(QVnames[i][0] == variablekey) {
+				return QVnames[i][1];
+			}
+		}
+	}
+	
+	function look4goto(qn,id) {
+		console.log("GOTO SEARCH: "+id);
+		var qID = "Q-"+id;
+		// If there's a doc in the XXXXXXXXXXXXXXXX, remove it.
+		if (docforindex(path.indexOf(id))) {
+			console.log("DOC FOUND "+id);
+			doc_bin.splice(doc_bin.length-1,1);
+		}
+		convo_bin.splice(-2,2);
+		var re = new RegExp("GOTO:(([a-z0-9\._-]*)\s*)$","gi");
+		if (document.getElementById(qID).innerHTML.match(re)) {
+			convo_bin.splice(-1,1);
+			console.log("GOTO FOUND: "+id);
+			textinput = re.exec(document.getElementById(qID).innerHTML)[2]+"";
+			if (docforindex(indexis(textinput))) {
+				document.getElementById("Xi-"+path[qn]).value = document.getElementById(valueis(textinput)).innerHTML;
+				console.log("DOC FOUND "+textinput);
+				doc_bin.splice(doc_bin.length-1,1);
+			}
+			look4goto(qn,textinput);
+		}
+	}
+	
+	function goback(qn) {
+		Qlast = qn - 3
+		qn = qn - 2;
+		label = path[qn];
+		goingback = 1;
+		
+		console.log("GO BACK TO:"+qn);
+		var re = new RegExp('(((^|\\n).*)*)<div id="break-at-'+qn+'" class="frame">((.*)(\\W.*))*', 'g');
+		document.getElementById("QandA").innerHTML = document.getElementById("QandA").innerHTML.replace(re, '$1');
+		document.getElementById('Choices').innerHTML += "<input type=\"hidden\" id=\"Xi-"+path[qn]+"\" name=\"Xi-"+path[qn]+"\" value=\"\">";
+			console.log("####################: "+path[path.length-1]);
+		
+		//look4goto(qn,path[path.length-1]);
+		
+		path.splice(-1,1);
+		convo_bin.splice(-4,4);
+		//convo_bin.splice(-2,2);
+
+		// If there's a doc in the last Q that you're removing, hold on to it.
+		// And put it back after you've removed it. When you rerender the Q.
+		if (document.getElementById("X-"+path[qn]) && document.getElementById(valueis(path[Qlast]))) {
+			document.getElementById("Xi-"+path[qn]).value = document.getElementById(valueis(path[Qlast])).innerHTML;
+			doc_bin.splice(doc_bin.length-1,1);
+		}
+		
+		// If there's a doc in the current Q, remove it.
+		if (docforindex(currentQ)) {
+			console.log("DOC FOUND (current) "+currentQ);
+			doc_bin.splice(doc_bin.length-1,1);
+		}
+		// If there's a doc in the queued up Q, remove it. 
+		if (document.getElementById(Dhtml)) {
+			console.log("DOC FOUND (ondeck)"+Dhtml);
+			doc_bin.splice(doc_bin.length-1,1);
+		}
+		
+		look4goto(qn,path[path.length-1]);
+		
+		if (freetext != 0) {
+			document.getElementById(freetext).value = "";
+		}
+		QNum = qn;
+		loadQ = path[path.length-1];
+		path.splice(-1,1);
+		
+		console.log("Reload ans for: "+loadQ);
+		answerQ(loadQ);
+	}
+
+	function transcript(output) {
+		var convo_output = "";
+		for (var i = 0, len = convo_bin.length; i < len; i++) {
+			convo_output += convo_bin[i];
+		}
+		if (output == 1) {
+			return convo_output;
+		} else {
+			return convo_output.replace(/<[^>]*>/g,"");
+		}
+	}		
+	
+	function doc() {
+		var doc_output = ""; 
+		for (var i = 0, len = doc_bin.length; i < len; i++) {
+			doc_output += doc_bin[i][0];
+		}
+		return swapvar(doc_output);
+	}	
+	
+	function json_str() {
+		
+		var json_list = "{";
+		for(var i = 0; i < QVnames.length; i++) {
+			if (!document.getElementById("Q-"+QVnames[i][0]).innerHTML.match(/(GOTO:(\d*)(.\s*\d+)*)/)) {
+				if (document.getElementById(QVnames[i][1])) {
+					json_list = json_list+'"'+QVnames[i][1]+'":"'+document.getElementById(QVnames[i][1]).innerHTML+'"';
+				} else {
+					json_list = json_list+'"'+QVnames[i][1]+'":"'+'"';
+				}
+				json_list = json_list+",";
+			} 
+			if (i+1 == QVnames.length) {
+				json_list = json_list.replace(/,$/, '');
+				json_list = json_list+"}";
+			}
+		}
+		return json_list;
+	}
+
+	function mail2(to,subject,body) {
+		to = encodeURIComponent(to);
+		subject = encodeURIComponent(subject);
+		body = encodeURIComponent(body);
+		window.location.href = "mailto:"+to+"?subject="+subject+"&body="+body;
+	}
+	
+	function submit2(action,method,docAs,instructions,transcriptAs,jsonAs,target) {
+		document.FORM.action = action;
+		document.FORM.method = method;
+		if (target) {
+			document.FORM.target = target;
+		} else {
+			document.FORM.target = "_self";		
+		}
+		
+		if (docAs) {
+			if (document.getElementsByName(docAs).length == 0) { 
+				var doctext = document.createElement("textarea");
+				doctext.style.display ='none';
+				doctext.name= docAs;
+				doctext.value= doc();
+				document.getElementById('FORM').appendChild(doctext);
+			} else {
+				$('textarea[name='+docAs+']').val(json_str())
+			}
+			if (instructions) {
+				if (document.getElementsByName('i').length == 0) { 
+					var instructtext = document.createElement("textarea");
+					instructtext.type='hidden';
+					instructtext.style.display ='none';
+					instructtext.name= 'i';
+					instructtext.value= instructions;
+					document.getElementById('FORM').appendChild(instructtext);	
+				} else {
+					$('textarea[name=i]').val(json_str())
+				}
+			}
+		}
+		if (transcriptAs) {
+			if (document.getElementsByName(transcriptAs).length == 0) { 
+				var ttext = document.createElement("textarea");
+				ttext.type='hidden';
+				ttext.style.display ='none';
+				ttext.name= transcriptAs;
+				ttext.value= transcript();
+				document.getElementById('FORM').appendChild(ttext);
+			} else {
+				$('textarea[name='+transcriptAs+']').val(json_str())
+			}
+		}
+		if (jsonAs) {
+			if (document.getElementsByName(jsonAs).length == 0) { 
+				var json = document.createElement("textarea");
+				json.type='hidden';
+				json.style.display ='none';
+				json.name= jsonAs;			
+				json.value= json_str();
+				document.getElementById('FORM').appendChild(json);
+			} else {
+				$('textarea[name='+jsonAs+']').val(json_str())
+			}
+		}
+		var ondeckdiv = document.getElementById('ondeck').innerHTML;
+		var rawmarkupdiv = document.getElementById('rawmarkup').innerHTML;
+		document.getElementById('ondeck').innerHTML = "";
+		document.getElementById('rawmarkup').innerHTML = "";
+		document.FORM.submit();
+		document.getElementById('ondeck').innerHTML = ondeckdiv;
+		document.getElementById('rawmarkup').innerHTML = rawmarkupdiv;
+	}
+	
+	function csv() {
+		var csv_list = "";
+		for(var i = 0; i < QVnames.length; i++) {
+			if (!document.getElementById("Q-"+QVnames[i][0]).innerHTML.match(/(GOTO:(\d*)(.\s*\d+)*)/)) {
+				csv_list = csv_list+'"'+QVnames[i][1]+'"';
+				csv_list = csv_list+",";
+			} 
+			if (i+1 == QVnames.length) {
+				csv_list = csv_list.replace(/,$/, '');
+				csv_list = csv_list+"\n";
+			}
+		}
+		for(var i = 0; i < QVnames.length; i++) {
+			if (!document.getElementById("Q-"+QVnames[i][0]).innerHTML.match(/(GOTO:(\d*)(.\s*\d+)*)/)) {
+				if (document.getElementById(QVnames[i][1])) {
+					csv_list = csv_list+'"'+document.getElementById(QVnames[i][1]).innerHTML+'"';
+				} else {
+					csv_list = csv_list+'""';
+				}
+				csv_list = csv_list+",";
+			} 			
+			if (i+1 == QVnames.length) {
+				csv_list = csv_list.replace(/,$/, '');
+				csv_list = csv_list+"\n";
+			}
+		}
+
+		return csv_list;
+	}
+	
+	function getvar(val) {
+		return document.getElementById(val).value;
+	}
+
+	function goto(val) {
+	   answerQ(indexis(val));
+	}
+
+	// h/t http://runnable.com/U5HC9xtufQpsu5aj/use-javascript-to-save-textarea-as-a-txt-file
+	function save2(filename,content)
+	{
+
+	// I'm using file system support as a proxy for support for this feature. 
+	// Check based on one found at: http://blog.teamtreehouse.com/building-an-html5-text-editor-with-the-filesystem-apis
+	// Handle vendor prefixes.
+	window.requestFileSystem = window.requestFileSystem || 
+							   window.webkitRequestFileSystem;
+	// Check for support.
+	if (window.requestFileSystem) {
+	// content = ID of textarea to save
+	// name = name to save file as, including file extension     
+	// grab the content of the form field and place it into a variable
+	//    var textToWrite = document.getElementById(content).value;
+	//  create a new Blob (html5 magic) that conatins the data from your form feild
+		var textFileAsBlob = new Blob([content], {type:'text/plain'});
+		
+	// Specify the name of the file to be saved
+		var fileNamecontentAs = filename;
+		
+	// Optionally allow the user to choose a file name by providing 
+	// an imput field in the HTML and using the collected data here
+	// var fileNamecontentAs = txtFileName.text;
+
+	// create a link for our script to 'click'
+		var downloadLink = document.createElement("a");
+	//  supply the name of the file (from the var above).
+	// you could create the name here but using a var
+	// allows more flexability later.
+		downloadLink.download = fileNamecontentAs;
+	// provide text for the link. This will be hidden so you
+	// can actually use anything you want.
+		downloadLink.innerHTML = "My Hidden Link";
+		
+	// allow our code to work in webkit & Gecko based browsers
+	// without the need for a if / else block.
+		window.URL = window.URL || window.webkitURL;
+			  
+	// Create the link Object.
+		downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+	// when link is clicked call a function to remove it from
+	// the DOM in case user wants to save a second file.
+		downloadLink.onclick = destroyClickedElement;
+	// make sure the link is hidden.
+		downloadLink.style.display = "none";
+	// add the link to the DOM
+		document.body.appendChild(downloadLink);
+		
+	// click the new link
+		downloadLink.click();
+	} else {
+		alert('This feature is not supported by your browser.');
+	}
+		
+	}
+
+	function destroyClickedElement(event)
+	{
+	// remove the link from the DOM
+		document.body.removeChild(event.target);
+	}
+
+	// EOF
+
+</script>
+</BODY>
+</HTML>
